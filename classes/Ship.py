@@ -20,4 +20,10 @@ class Ship:
         self.hits = []
 
     def is_sunk(self):
-        print("is_sunk")
+        """
+        Check if the ship is sunk.
+
+        Returns:
+        - bool: True if all positions are hit, False otherwise.
+        """
+        return all(pos in self.hits for pos in self.positions)
