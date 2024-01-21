@@ -49,7 +49,7 @@ class Game:
                 start_action = int(input("Enter your choice: \n"))
 
                 if start_action == 1:
-                    print("starting the game")
+                    self.display_player_boards()
                     break
                 elif start_action == 2:
                     # end the game
@@ -79,7 +79,21 @@ class Game:
         print("place_ships_for_player")
 
     def display_player_boards(self):
-        print("display_player_boards")
+        """
+        Display the game boards of all players.
+        """
+        
+        # Iterate through each player in the game
+        for player in self.players:
+            # Determine whether to show ships on the board or not
+            show_ships = False if player.name == "Computer" else True
+
+            # Display the name of the player's board and the board itself
+            print(f"\n {player.name}'s Board:")
+            player.board.display_board(show_ships)
+
+            # Print a separator line between player boards
+            print("\n" + "=" * 40 + "\n")
 
     def play_turn(self):
         print("play_turn")

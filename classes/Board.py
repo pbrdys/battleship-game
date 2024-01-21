@@ -1,3 +1,5 @@
+from colorama import Fore, Style 
+
 class Board:
     """
     Represents a game board in the Battleship game.
@@ -31,7 +33,24 @@ class Board:
         print("receive_attack")
 
     def display_board(self, show_ships):
-        print("display_board")
+        """
+        Display the current state of the game board.
+
+        Parameters:
+        - show_ships (bool): True to display ships, False to hide them.
+        """
+
+        # Display column numbers at the top of the board
+        print("     " + "   ".join(str(i) for i in range(self.width)))
+
+        # Iterate through each row on the board
+        for y in range(self.height):
+            # Initialize the row string with the current row number
+            row_str = f"{y:2d} |"
+
+            # Print the current row and separator line
+            print(row_str)
+            print("   +" + "+".join(["---" for _ in range(self.width)]) + "+")
 
     def get_cell_content(self, x, y, show_ships):
         print("get_cell_content")
