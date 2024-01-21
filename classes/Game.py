@@ -1,5 +1,7 @@
 from classes.Board import Board
 from classes.Player import Player
+from classes.ShipType import ShipType
+from classes.Ship import Ship
 from colorama import Fore, Style
 
 class Game:
@@ -49,6 +51,9 @@ class Game:
                 start_action = int(input("Enter your choice: \n"))
 
                 if start_action == 1:
+                     # if start game then place ships and display boards
+                    self.place_ships_for_player(self.players[0])
+                    self.place_ships_for_player(self.players[1])
                     self.display_player_boards()
                     break
                 elif start_action == 2:
@@ -76,7 +81,25 @@ class Game:
         quit()
 
     def place_ships_for_player(self, player):
-        print("place_ships_for_player")
+        """
+        Place ships on the board for the specified player.
+
+        Parameters:
+        - player (Player): The player for whom ships are to be placed.
+        """
+        
+        # List of ship types to be placed for the player
+        ship_types = [
+            ShipType.PATROL_BOAT,
+            ShipType.SUBMARINE,
+            ShipType.BATTLESHIP,
+            ShipType.CARRIER
+            ]
+
+        # Iterate through each ship type and place a ship on the player's board
+        for ship_type in ship_types:
+            ship = Ship(ship_type)
+            player.board.place_ship(ship)
 
     def display_player_boards(self):
         """
