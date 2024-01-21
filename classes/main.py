@@ -15,6 +15,7 @@ def main():
             # Continue playing turns until one player is defeated
             while not player1_defeated and not computer_defeated:
                 game.play_turn()
+                
                 next_turn = str(input("Next turn? (y/n) \n")).lower()
                 if next_turn == "y":
                     continue

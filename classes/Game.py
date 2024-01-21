@@ -3,6 +3,7 @@ from classes.Player import Player
 from classes.ShipType import ShipType
 from classes.Ship import Ship
 from colorama import Fore, Style
+import random
 
 class Game:
     """
@@ -151,7 +152,23 @@ class Game:
         print("determine_coordinates")
 
     def generate_random_attack_coordinates(self):
-        print("generate_random_attack_coordinates")
+        """
+        Generate random attack coordinates.
+
+        Returns:
+        - tuple: The randomly generated x, y coordinates for an attack.
+        """
+
+        # Generate random x and y coordinates within the board boundaries
+        x = random.randint(0, self.players[0].board.width - 1)
+        y = random.randint(0, self.players[0].board.height - 1)
+
+        # Ensure the generated coordinates have not been attacked before
+        while (x, y) in self.players[0].board.attacks:
+            # Regenerate coordinates if they have been attacked before
+            x = random.randint(0, self.players[0].board.width - 1)
+            y = random.randint(0, self.players[0].board.height - 1)
+        return x, y
 
     def check_sunk_ships_for_player(self, player):
         print("check_sunk_ships_for_player")
