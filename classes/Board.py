@@ -96,12 +96,46 @@ class Board:
             # Initialize the row string with the current row number
             row_str = f"{y:2d} |"
 
+            # Iterate through each column in the row
+            for x in range(self.width):
+                # Get the content of the current cell based
+                cell_content = self.get_cell_content(x, y, show_ships)
+                # Customize cell content display based on the type of content
+                if cell_content == "X":
+                    # Display hit in green
+                    row_str += f" {Fore.GREEN + cell_content + Style.RESET_ALL} |"
+                elif cell_content == "/":
+                    # Display miss in red
+                    row_str += f" {Fore.RED + cell_content + Style.RESET_ALL} |"
+                else:
+                    # Display ship in yellow
+                    row_str += f" {Fore.YELLOW + cell_content + Style.RESET_ALL} |"
+            
             # Print the current row and separator line
             print(row_str)
             print("   +" + "+".join(["---" for _ in range(self.width)]) + "+")
 
     def get_cell_content(self, x, y, show_ships):
-        print("get_cell_content")
+        """
+        Get the content of a cell on the board for display purposes.
+
+        Parameters:
+        - x (int): The x-coordinate of the cell.
+        - y (int): The y-coordinate of the cell.
+        - show_ships (bool): True to display ships, False to hide them.
+
+        Returns:
+        - str: The content of the cell.
+        """
+
+        # Iterate through each ship on the board
+        for ship in self.ships:
+            # Check if the current cell is part of the ship's positions
+            if (x, y) in ship.positions:
+                return str(ship.ship_type.value) if show_ships else " "
+            
+        # If the cell has no ship and has not been attacked
+        return " "
         
     def all_ships_sunken(self):
         """
