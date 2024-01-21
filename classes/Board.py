@@ -37,4 +37,10 @@ class Board:
         print("get_cell_content")
         
     def all_ships_sunken(self):
-        print("all_ships_sunken")
+        """
+        Check if all ships on the board are sunk.
+
+        Returns:
+        - bool: True if all ships are sunk, False otherwise.
+        """
+        return all(ship.is_sunk() for ship in self.ships)
