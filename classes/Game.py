@@ -147,9 +147,61 @@ class Game:
 
         # Display the name of the player whose turn it is
         print(f"{current_player.name}'s Turn")
+        
+        # Get attack coordinates
+        x, y = self.determine_coordinates(current_player)
+        
+        print("Determined coordinates: " + x, y)
 
     def determine_coordinates(self, current_player):
         print("determine_coordinates")
+        """
+        Determine the coordinates for an attack based on the player.
+
+        Parameters:
+        - current_player (Player): The player making the attack.
+
+        Returns:
+        - tuple: The x, y coordinates for the attack.
+        """
+
+        # Continue prompting for coordinates until valid input is provided
+        while True:
+            try:
+                if current_player.name == "Computer":
+                    # Generate random coordinates for the computer
+                    other_player = self.players[0]
+                    x, y = self.generate_random_attack_coordinates()
+                    print(f"Computer chose coordinates: ({x}, {y})")
+                else:
+                    # Promt player input for x and y coordinates
+                    other_player = self.players[1]
+                    x = int(input("Enter the x-coordinate for your attack:\n"))
+                    y = int(input("Enter the y-coordinate for your attack:\n"))
+
+                # Check if the chosen coordinates are within the board boundaries
+                if (0 <= x < other_player.board.width and
+                        0 <= y < other_player.board.height):
+                    # Break the loop if coordinates haven't been attacked before, then return them
+                    if (x, y) not in other_player.board.attacks:
+                        break
+                    else:
+                        print(Fore.YELLOW + "You've already attacked these coordinates.")
+                        print(Style.RESET_ALL)
+                else:
+                    print(Fore.RED + "Please choose coordinates within the board (0 - 8).")
+                    print(Style.RESET_ALL)
+
+            except ValueError:
+                print(Fore.RED + "Please enter valid integers for x and y coordinates.")
+                print(Style.RESET_ALL)
+                continue
+            except Exception:
+                print(Fore.GREEN + "Your random values can not crash this battleship.")
+                print("Try again and make your move ;) \n")
+                print(Style.RESET_ALL)
+                continue
+        return x, y
 
     def generate_random_attack_coordinates(self):
         """
