@@ -119,7 +119,33 @@ class Game:
             print("\n" + "=" * 40 + "\n")
 
     def play_turn(self):
-        print("play_turn")
+        """
+        Play a turn in the game, allowing players to make moves.
+        """
+
+        # Increment the turn counter
+        self.turn += 1
+
+        # Display turn information
+        print("\n" + "%" * 40)
+        if self.turn < 10:
+            print("%" * 15 + f" Turn Nr {self.turn} " + "%" * 14)
+        else:
+            print("%" * 14 + f" Turn Nr {self.turn} " + "%" * 14)
+        print("%" * 40 + "\n")
+
+        # Determine current and other player based on the turn number
+        if not self.turn % 2 == 0: 
+            # Player turn
+            current_player = self.players[0]
+            other_player = self.players[1]
+        else:
+            # Computer turn
+            current_player = self.players[1]
+            other_player = self.players[0]
+
+        # Display the name of the player whose turn it is
+        print(f"{current_player.name}'s Turn")
 
     def determine_coordinates(self, current_player):
         print("determine_coordinates")
