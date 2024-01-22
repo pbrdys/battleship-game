@@ -230,7 +230,21 @@ class Game:
         return x, y
 
     def check_sunk_ships_for_player(self, player):
-        print("check_sunk_ships_for_player")
+        """
+        Check for sunk ships on the board of the specified player.
+
+        Parameters:
+        - player (Player): The player whose board is checked for sunk ships.
+        """
+
+        for ship in player.board.ships:
+            # if the ship hasn't been destroyed already, check if it was destroyed now
+            if ship not in player.board.already_sunk_ships:
+                if ship.is_sunk():
+                    print(Fore.GREEN +  f"{ship.ship_type.name} - destroyed!")
+                    # Remove ship after it was destroyed
+                    player.board.already_sunk_ships.append(ship)
+                    print(Style.RESET_ALL)
 
     def show_continue_message(self):
         print("show_continue_message")
