@@ -164,6 +164,10 @@ class Game:
         # Check if any ship of the enemy have been sunk
         self.check_sunk_ships_for_player(other_player)
 
+        # Show a message prompting the player to continue
+        if current_player.name == "Computer":
+            self.show_continue_message()
+
     def determine_coordinates(self, current_player):
         """
         Determine the coordinates for an attack based on the player.
@@ -250,4 +254,27 @@ class Game:
                     print(Style.RESET_ALL)
 
     def show_continue_message(self):
-        print("show_continue_message")
+        """
+        Display a message and wait for user input to continue the game.
+        """
+        while True:
+            try:
+                user_action = str(input("Enter to continue and q for quit:\n"))
+
+                if not user_action:
+                    # If Enter is pressed, display player boards and continue
+                    self.display_player_boards()
+                    break
+                elif user_action.lower() == "q":
+                    # If 'q' is entered, end the game
+                    self.end_game()
+
+            except ValueError:
+                print(Fore.RED + "Please enter 'q' to quit or press Enter to continue.")
+                print(Style.RESET_ALL)
+                continue
+            except Exception:
+                print(Fore.GREEN + "Your random values can not crash this battleship.")
+                print("Try again and make your move ;) \n")
+                print(Style.RESET_ALL)
+                continue
