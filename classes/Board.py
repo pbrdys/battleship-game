@@ -162,7 +162,16 @@ class Board:
         for ship in self.ships:
             # Check if the current cell is part of the ship's positions
             if (x, y) in ship.positions:
+                # Display 'X' for hit ship, otherwise display the ship's length
+                if (x, y) in ship.hits:
+                    return "X"
                 return str(ship.ship_type.value) if show_ships else " "
+
+        # Check if the cell has been attacked
+        if (x, y) in self.attacks:
+            # Display "/" if the attack missed all ships
+            if not any((x, y) in ship.hits for ship in self.ships):
+                return "/"
             
         # If the cell has no ship and has not been attacked
         return " "
