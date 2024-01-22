@@ -147,14 +147,21 @@ class Game:
 
         # Display the name of the player whose turn it is
         print(f"{current_player.name}'s Turn")
-        
+
         # Get attack coordinates
         x, y = self.determine_coordinates(current_player)
-        
-        print("Determined coordinates: " + x, y)
+
+        # Attack the enemys board
+        hit = other_player.board.receive_attack(x, y)
+
+        # Display the result of the attack
+        if hit:
+            print(Fore.GREEN + f"{current_player.name} Hit!")
+        else:
+            print(Fore.RED + f"{current_player.name} Miss!")
+        print(Style.RESET_ALL)
 
     def determine_coordinates(self, current_player):
-        print("determine_coordinates")
         """
         Determine the coordinates for an attack based on the player.
 

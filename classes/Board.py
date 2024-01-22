@@ -78,7 +78,37 @@ class Board:
                 break
 
     def receive_attack(self, x, y):
-        print("receive_attack")
+        """
+        Receive an attack at the specified coordinates.
+
+        Parameters:
+        - x (int): The x-coordinate of the attack.
+        - y (int): The y-coordinate of the attack.
+
+        Returns:
+        - bool: True if the attack hits a ship, False otherwise.
+        """
+
+        # Check if the attack coordinates are within the valid board range
+        if 0 <= x < self.width and 0 <= y < self.height:
+            # Check if the coordinates have not been attacked before
+            if (x, y) not in self.attacks:
+                # Mark the coordinates as attacked
+                self.attacks.add((x, y))
+
+                # Check if the attack hits any ship on the board
+                for ship in self.ships:
+                    if (x, y) in ship.positions:
+                        # record the Hit and return True
+                        ship.hits.append((x, y))
+                        return True
+
+                # Miss
+                return False
+            else:
+                print("You've already attacked these coordinates.")
+        else:
+            raise ValueError("Invalid attack coordinates.")
 
     def display_board(self, show_ships):
         """
