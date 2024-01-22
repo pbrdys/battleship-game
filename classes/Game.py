@@ -161,6 +161,9 @@ class Game:
             print(Fore.RED + f"{current_player.name} Miss!")
         print(Style.RESET_ALL)
 
+        # Check if any ship of the enemy have been sunk
+        self.check_sunk_ships_for_player(other_player)
+
     def determine_coordinates(self, current_player):
         """
         Determine the coordinates for an attack based on the player.
