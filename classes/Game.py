@@ -259,7 +259,7 @@ class Game:
         """
         while True:
             try:
-                user_action = str(input("Enter to continue and q for quit:\n"))
+                user_action = str(input("Press Enter to continue or q to quit:\n"))
 
                 if not user_action:
                     # If Enter is pressed, display player boards and continue

@@ -68,7 +68,8 @@ Choosing the wrong value will result in an [error message](#Display-Error-Messag
 ![Player1-Turn](./doc/play-turn-player1.jpg)
 
 In the next turn the computer is about to attack the players board.
-The coordinates for the computer are being generated randomly. 
+The coordinates for the computer are being generated randomly.
+
 ![Computer-Turn](./doc/play-turn-computer.jpg)
 
 Like this both players play their turns back and forth until the game is over.
@@ -82,7 +83,7 @@ After a player attacked his opponents board he get's a info message wether he "h
 ![Hit](./doc/hit.jpg)
 
 #### Miss
-![Miss](./doc/miss.jpg)
+![Miss](./doc/miss-attack.jpg)
 
 ### Continue or Quit the Game
 After both players made their attack the user is being promted to choose wether to "continue" or "quit" the game.
@@ -90,17 +91,18 @@ After both players made their attack the user is being promted to choose wether 
 
 ### Update Player Boards
 The updated player boards contain:
+* Player 1:
+    * displaying ships as numbers (yellow)
+    * displaying hits as X (green)
+    * displaying miss as / (red)
 
 ![Updated-Player-Board](./doc/updated-player-board.jpg)
-    * Player 1:
-        * displaying ships as numbers (yellow)
-        * displaying hits as X (green)
-        * displaying miss as / (red)
+
+* Computer:
+    * displaying hits as X (green)
+    * displaying miss as / (red)
 
 ![Updated-Computer-Board](./doc/updated-computer-board.jpg)
-    * Computer:
-        * displaying hits as X (green)
-        * displaying miss as / (red)
 
 ### End the game 
 There are three ways to end the game.
@@ -115,7 +117,7 @@ To end the game at the welcome screen the player has to chose "2".
 #### End Game during the game: 
 ![During-the-game-End-Game](./doc/quit-game-message.jpg)
 
-To end the game during the game, after the computers turn, the player has to chose "q" for quit. 
+To end the game during the game, the player has to chose "q" to quit. 
 
 ### Determine the winner
 The third way to end the game is by winning or losing the game. After both players have played turn by turn against each other, the player who first has destroyed all ships of his opponend wins the game.
@@ -171,9 +173,11 @@ The initial file is the **run.py** which is calling:
 The **main()** function is responsible to establish the whole game.
 It is starting the game by creating a new **Game** instance, placing ships on the boards of both players and displaying the initial boards. 
 
+### Class Diagram
+
 ![Class-Diagram](./doc/class-diagram.jpg)
 
-### Game Class
+#### Game Class
 The Game class represents the overall structure and logic of a Battleship game. 
 
 * __init__(self)
@@ -212,7 +216,7 @@ The Game class represents the overall structure and logic of a Battleship game.
     * If Enter is pressed, displays player boards and continues.
     * If 'q' is entered, ends the game.
 
-### Player Class
+#### Player Class
 The Player class represents a player in the Battleship [Game](#Game-Class).
 
 * __init__(self, name, board)
@@ -220,7 +224,7 @@ The Player class represents a player in the Battleship [Game](#Game-Class).
 
 The Player class serves as a container for player-related information, such as the player's name and associated game board. Instances of this class are used in the Game class to represent the two players participating in the Battleship game.
 
-### Board Class 
+#### Board Class 
 The Board class represents a game board in the Battleship game.
 The Board is associated to the [Player](#player-class).
 The Board class is responsible for managing the state of the game board, placing ships, handling attacks, and displaying the board for players during the game.
@@ -244,7 +248,7 @@ The Board class is responsible for managing the state of the game board, placing
 * all_ships_sunken(self)
     Returns True if all ships are sunk, False otherwise.
 
-### Ship Class
+#### Ship Class
 The Ship class represents a ship in the Battleship game.
 
 * __init__(self, ship_type)
@@ -256,7 +260,7 @@ The Ship class represents a ship in the Battleship game.
 
 The primary purpose of the Ship class is to represent the state of a ship in the game, keeping track of its type, positions, and hits. The is_sunk method is crucial for determining whether a ship is still alive or has been sunk by enemy attacks.
 
-### ShipType
+#### ShipType
 The ShipType enum defines types of ships in the Battleship game, each associated with a specific length. It is used to represent the different ship types that players can place on the game board.
 
 * There are 4 different ship types are:
@@ -265,7 +269,7 @@ The ShipType enum defines types of ships in the Battleship game, each associated
     * BATTLESHIP with the length of 4
     * CARRIER with the length of 5
 
-### Orientation Class
+#### Orientation Class
 The Orientation enum defines ship orientations in the Battleship game. It is used to represent whether a ship is placed horizontally or vertically on the game board.
 * These are the two possible orientations for a ship:
     * HORIZONTAL
@@ -273,6 +277,10 @@ The Orientation enum defines ship orientations in the Battleship game. It is use
 
 
 ## Flow Diagram
+In the following flowchart, the game flow of the Battleship implementation is visually represented. This flowchart outlines the sequence of actions and decisions players and the computer make during the game, providing a high-level overview of the game's logic.
+
+![Game Flowchart](./doc/flow-chart.jpg)
+
 
 # Testing
 
