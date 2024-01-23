@@ -53,9 +53,9 @@ class Game:
 
                 if start_action == 1:
                      # if start game then place ships and display boards
-                    self.place_ships_for_player(self.players[0])
-                    self.place_ships_for_player(self.players[1])
-                    self.display_player_boards()
+                    self.place_ships(self.players[0])
+                    self.place_ships(self.players[1])
+                    self.display_boards()
                     break
                 elif start_action == 2:
                     # end the game
@@ -81,7 +81,7 @@ class Game:
         print(Style.RESET_ALL)
         quit()
 
-    def place_ships_for_player(self, player):
+    def place_ships(self, player):
         """
         Place ships on the board for the specified player.
 
@@ -102,7 +102,7 @@ class Game:
             ship = Ship(ship_type)
             player.board.place_ship(ship)
 
-    def display_player_boards(self):
+    def display_boards(self):
         """
         Display the game boards of all players.
         """
@@ -149,7 +149,7 @@ class Game:
         print(f"{current_player.name}'s Turn")
 
         # Get attack coordinates
-        x, y = self.determine_coordinates(current_player)
+        x, y = self.get_attack_coordinates(current_player)
 
         # Attack the enemys board
         hit = other_player.board.receive_attack(x, y)
@@ -162,13 +162,13 @@ class Game:
         print(Style.RESET_ALL)
 
         # Check if any ship of the enemy have been sunk
-        self.check_sunk_ships_for_player(other_player)
+        self.check_sunk_ships(other_player)
 
         # Show a message prompting the player to continue
         if current_player.name == "Computer":
             self.show_continue_message()
 
-    def determine_coordinates(self, current_player):
+    def get_attack_coordinates(self, current_player):
         """
         Determine the coordinates for an attack based on the player.
 
@@ -236,7 +236,7 @@ class Game:
             y = random.randint(0, self.players[0].board.height - 1)
         return x, y
 
-    def check_sunk_ships_for_player(self, player):
+    def check_sunk_ships(self, player):
         """
         Check for sunk ships on the board of the specified player.
 
@@ -263,7 +263,7 @@ class Game:
 
                 if not user_action:
                     # If Enter is pressed, display player boards and continue
-                    self.display_player_boards()
+                    self.display_boards()
                     break
                 elif user_action.lower() == "q":
                     # If 'q' is entered, end the game
