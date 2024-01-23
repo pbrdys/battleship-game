@@ -11,7 +11,6 @@ class Board:
     - height (int): The height of the board.
     - ships (list): List of ships on the board.
     - attacks (set): Set of coordinates that have been attacked.
-    - already_sunk_ships: List of ships already destroyed.
     """
 
     def __init__(self, width, height):

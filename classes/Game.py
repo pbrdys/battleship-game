@@ -28,7 +28,7 @@ class Game:
         """
 
         # Display a welcome message and game instructions
-        print("*" * 67)
+        print("*" * 61)
         print("**                 Welcome to Battleship Game!             **")
         print("**                                                         **")
         print("**  Prepare for an exciting naval battle against the       **")
@@ -36,14 +36,14 @@ class Game:
         print("**  unleash powerful attacks, and sink your opponent's     **")
         print("**  ships to claim victory. Enjoy the thrill of the high   **")
         print("**  seas right from your console!                          **")
-        print("*" * 67)
+        print("*" * 61)
         print("\n")
-        print("*" * 67)
+        print("*" * 61)
         print("**                 Are you ready to fight pirate?          **")
-        print("-" * 67)
+        print("-" * 61)
         print("**  1 Ready the cannons (start game)                       **")
         print("**  2 Every man for himself! Swim for yer lives (end game) **")
-        print("*" * 67)
+        print("*" * 61)
 
         # Allow players to choose between starting the game or ending it
         while True:
@@ -77,7 +77,7 @@ class Game:
         """
         Quit the console
         """
-        print(Fore.YELLOW + "You quit the game! Enjoy your day outside!")
+        print(Fore.CYAN + "You quit the game! Enjoy your day outside!")
         print(Style.RESET_ALL)
         quit()
 
