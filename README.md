@@ -162,21 +162,24 @@ In certain scenarios, the application may encounter unforeseeable input values. 
 
 ### Game Class
 +---------------------------------------------------+
-* Game propertys:                                   |
-    * players: list                                 |  
-    * turn: int                                     |
+* Game propertys:
+    * players: list                           
+    * turn: int
+
 +---------------------------------------------------+
-* Game methods:                                     |
-    * __init__()                                    |
-    * start_game()                                  |
-* end_game()                                        |
-    * place_ships_for_player(player: Player)        |
-    * display_player_boards()                       |
-    * play_turn()                                   |
-    * determine_coordinates(player: Player): tuple  |
-    * generate_random_attack_coordinates(): tuple   |
-    * check_sunk_ships_for_player(player: Player)   |
-    * show_continue_message()                       |
+
+* Game methods:
+    * __init__()
+    * start_game()
+    * end_game()
+    * place_ships_for_player(player: Player)
+    * display_player_boards()
+    * play_turn()
+    * determine_coordinates(player: Player): tuple
+    * generate_random_attack_coordinates(): tuple
+    * check_sunk_ships_for_player(player: Player)
+    * show_continue_message()
+
 +---------------------------------------------------+
 ### Player Class
 
