@@ -159,40 +159,118 @@ In certain scenarios, the application may encounter unforeseeable input values. 
 * Dynamic player name and board size.
 
 ## Data Model
+I utilised an Object Orientated Programming approach to developing the game.
+The initial file is the **run.py** which is calling:
+<pre>
+```python
+    if __name__ == "__main__":
+        main()
+```
+</pre> 
+
+The **main()** function is responsible to establish the whole game.
+It is starting the game by creating a new **Game** instance, placing ships on the boards of both players and displaying the initial boards. 
+
+![Class-Diagram](./doc/class-diagram.jpg)
 
 ### Game Class
-+---------------------------------------------------+
-* Game propertys:
-    * players: list                           
-    * turn: int
+The Game class represents the overall structure and logic of a Battleship game. 
 
-+---------------------------------------------------+
+* __init__(self)
+    * Initializes a Battleship game with two players.
+    * Sets initial turn counter to 0.
+* start_game(self)
+    * Displays a welcome message and game instructions.
+    * Allows players to choose between starting the game or ending it.
+    * If the game starts, it places ships for both players and displays the initial boards.
+* end_game(self)
+    * Prints a message indicating the player chose to quit the game.
+    * Exits the console.
+* place_ships(self, player)
+    * Places ships on the board for the specified player.
+* display_boards(self)
+    * Iterates through each player and displays their board with or without showing ships based on the player's name.
+* play_turn(self)
+    * Increments the turn counter.
+    * Displays turn information.
+    * Determines the current player based on the turn number.
+    * Prompts the current player to make an attack.
+    * Displays the result of the attack and checks if any enemy ships have been sunk.
+    * Shows a message prompting the player to continue.
+* get_attack_coordinates(self, current_player)
+    * Determines the coordinates for an attack based on the player:
+        * For the computer player, generates random attack coordinates.
+        * For the human player, prompts for input and validates the coordinates.
+* generate_random_attack_coordinates(self)
+    * Generates random attack coordinates for the computer player.
+    * Ensures the generated coordinates have not been attacked before.
+* check_sunk_ships(self, player)
+    * Checks for sunk ships on the board of the specified player.
+    * Checks if it was destroyed and prints a message if so.
+* show_continue_message(self)
+    * Displays a message and waits for user input to continue the game.
+    * If Enter is pressed, displays player boards and continues.
+    * If 'q' is entered, ends the game.
 
-* Game methods:
-    * __init__()
-    * start_game()
-    * end_game()
-    * place_ships_for_player(player: Player)
-    * display_player_boards()
-    * play_turn()
-    * determine_coordinates(player: Player): tuple
-    * generate_random_attack_coordinates(): tuple
-    * check_sunk_ships_for_player(player: Player)
-    * show_continue_message()
-
-+---------------------------------------------------+
 ### Player Class
+The Player class represents a player in the Battleship [Game](#Game-Class).
+
+* __init__(self, name, board)
+    * Initializes a player with the given name and a game board.
+
+The Player class serves as a container for player-related information, such as the player's name and associated game board. Instances of this class are used in the Game class to represent the two players participating in the Battleship game.
 
 ### Board Class 
+The Board class represents a game board in the Battleship game.
+The Board is associated to the [Player](#player-class).
+The Board class is responsible for managing the state of the game board, placing ships, handling attacks, and displaying the board for players during the game.
+
+* __init__(self, width, height)
+    * Initializes a game board with the given width and height.
+* place_ship(self, ship)
+    * Places a ship on the board randomly.
+    * Randomly selects an orientation (horizontal or vertical) for the ship.
+    * Checks if the ship fits in the chosen orientation and starting position within the board boundaries.
+* receive_attack(self, x, y)
+    * Receives an attack at the specified coordinates (x, y).
+    * Checks if the attack coordinates are within the valid board range.
+    * Checks if the attack hits any ship on the board:
+        * Returns True if the attack hits a ship, False otherwise.
+* display_board(self, show_ships)
+    * Displays the current state of the game board.
+    * Uses color-coding to distinguish hits (green), misses (red), and ships (yellow).
+* get_cell_content(self, x, y, show_ships)
+    Gets the content of a cell on the board for display purposes.
+* all_ships_sunken(self)
+    Returns True if all ships are sunk, False otherwise.
 
 ### Ship Class
+The Ship class represents a ship in the Battleship game.
+
+* __init__(self, ship_type)
+    * Initializes a ship with the given type.
+
+* is_sunk(self)
+    Checks if the ship is sunk.
+    Returns True if all positions occupied by the ship have been hit, returns False otherwise.
+
+The primary purpose of the Ship class is to represent the state of a ship in the game, keeping track of its type, positions, and hits. The is_sunk method is crucial for determining whether a ship is still alive or has been sunk by enemy attacks.
 
 ### ShipType
+The ShipType enum defines types of ships in the Battleship game, each associated with a specific length. It is used to represent the different ship types that players can place on the game board.
 
-### main()
+* There are 4 different ship types are:
+    * PATROL_BOAT with the length of 2
+    * SUBMARINE with the length of 3
+    * BATTLESHIP with the length of 4
+    * CARRIER with the length of 5
 
 ### Orientation Class
-Enumeration 
+The Orientation enum defines ship orientations in the Battleship game. It is used to represent whether a ship is placed horizontally or vertically on the game board.
+* These are the two possible orientations for a ship:
+    * HORIZONTAL
+    * VERTICAL
+
 
 ## Flow Diagram
 
