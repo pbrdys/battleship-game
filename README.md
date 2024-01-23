@@ -41,10 +41,12 @@ The user can see a menu where he can chose if he wants to start or end the game.
 After the game was started the first thing the user will see are the boards of both players (player 1 and computer). 
 
 ![Initial-Player1-Board](./doc/initial-player-board.jpg)
+
 On the players board the ships are being displayed with yellow numbers. 
 The number is refering to the length of the ship.
 
 ![Initial-Computer-Board](./doc/initial-computer-board.jpg)
+
 The initial computer board is displayed with empty cells. The ships must be hidden for the player. 
 
 Both boards are being [updated](#Update-Player-Boards) after they have been attacked.
@@ -149,15 +151,44 @@ In certain scenarios, the application may encounter unforeseeable input values. 
 
 ![Exception-Handling](./doc/exception-handling.jpg)
 
-### Future Features
+
+
+## Future Features
 * Playing against another human
 * Implement smarter strategies for attack coordinates of the computer. For instance, after a successful hit, the next set of coordinates could be chosen from the adjacent cells of the previous hit, optimizing the computer's targeting approach.
 * Dynamic player name and board size.
 
 ## Data Model
-classes etc.
+
+### Game Class
++---------------------------------------------------+
+* Game propertys:                                   |
+    * players: list                                 |  
+    * turn: int                                     |
++---------------------------------------------------+
+* Game methods:                                     |
+    * __init__()                                    |
+    * start_game()                                  |
+* end_game()                                        |
+    * place_ships_for_player(player: Player)        |
+    * display_player_boards()                       |
+    * play_turn()                                   |
+    * determine_coordinates(player: Player): tuple  |
+    * generate_random_attack_coordinates(): tuple   |
+    * check_sunk_ships_for_player(player: Player)   |
+    * show_continue_message()                       |
++---------------------------------------------------+
+### Player Class
+
+### Board Class 
+
+### Ship Class
 
 ### ShipType
+
+### main()
+
+### Orientation Class
 Enumeration 
 
 ## Flow Diagram
