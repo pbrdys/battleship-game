@@ -368,9 +368,54 @@ To utilize colorama in your Python script, follow these steps:
 
 ## Built in Python Libraries 
 ### random 
-The random library was imported to access a number of the built in methods of generating a random selection. It was primarily utilised during the AI shot selection algorithms to select a random location to fire, or a random location from a generated list of options.
+The random library in Python provides a suite of functions for generating random numbers. In the context of the Battleship game, this library was imported to leverage its built-in methods for generating random selections. The primary application of the random library was observed in the AI shot selection algorithms, where it played a crucial role in choosing random locations for firing.
 
 # Deployment
+The site was deployed via Heroku.
+The project was developed utilising a Code Institute provided template.
+
+## Project Deployment
+
+### Setting Up Virtual Environment
+The deployment process begins by creating a virtual environment **(venv)** on your development machine. Within this virtual environment, essential packages, such as **colorama**, are installed. To ensure that unnecessary files from the **venv** are not uploaded to GitHub, it's crucial to add the virtual environment directory to the .gitignore file.
+
+### Python Essentials Template
+The project utilizes the Python Essentials Template, acting as a mock terminal that allows users to experience the Python console application in a web browser. Deployment to Heroku differs from GitHub Pages, and the following steps guide the deployment process:
+
+* **Orderly Input Methods**: It's essential to include a newline character (**\n**) at the end of each input method text. For instance:
+<pre>
+```python
+    x = int(input("Enter the x-coordinate for your attack:\n"))
+```
+</pre> 
+
+* **Requirements List**: Create a list of requirements for your project, specifying dependencies like colorama. Update the requirements.txt file with the command:
+<pre>
+```python
+    pip3 freeze > requirements.txt
+```
+</pre> 
+This file informs Heroku about the necessary dependencies to install.
+
+* **GitHub Repository**: Upload all project files to your GitHub repository [GitHub](https://github.com).
+
+* **Heroku Account Setup**:
+    * Sign up for a [Heroku](https://www.heroku.com/) account.
+    * From the Heroku Dashboard, create a new app by selecting 'New' and then 'Create New App'.
+    * Assign a name to the project (e.g., **pbrdys-battleship-game**).
+    * Choose a suitable region (e.g., 'Europe').
+
+* **Heroku Settings Tab**:
+    * **Config Vars**: No specific config vars are needed for this project.
+    * **Buildpacks**: Set up the following buildpacks in this exact order:
+        * Install Python
+        * Install Nodejs (required for running the mock terminal template)
+* **Heroku Deploy Tab**:
+    * Deployment Method: GitHub
+    * Connect to GitHub and link the repository to your Heroku account.
+    * Enable Automatic Deploys for continuous deployment or manually deploy when needed.
+
+By following these steps, your Battleship game will be successfully deployed on Heroku.
 
 
 # Credits
