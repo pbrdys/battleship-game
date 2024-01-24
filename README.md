@@ -281,11 +281,55 @@ In the following flowchart, the game flow of the Battleship implementation is vi
 
 ![Game Flowchart](./doc/flow-chart.jpg)
 
-
 # Testing
+Testing the Battleship game code involves verifying that different components and functionalities work as expected.
+Here are the ways I chose to test this code, as described below:
+
+## User Input Testing:
+To ensure the robustness of user input handling, a series of tests have been designed. Simply start the application and follow the actions described below.
+
+| Description                                                        | Action                                                                                                                                                                                                   | Expected Result                                              | Pass / Fail |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------- |
+| The game handles interaction with the welcome screen by user input | Enter valid values (1 or 2)                                                                                                                                                                              | Game is being started or ended                               | Pass        |
+| The game handles interaction with the welcome screen by user input | Attempt to enter various values that could potentially cause an error.                                                                                                                                   | Error message is being displayed and the game doesn't crash. | Pass        |
+| The game handles chosen attack coordinates by user input           | Enter valid values (integer within the board range)                                                                                                                                                      | Opponents board is being attacked as expected                | Pass        |
+| The game handles chosen attack coordinates by user input           | Attempt to enter various values as attack coordinates that could potentially cause an error. Input values such as non-integer characters, negative numbers, or coordinates outside the board boundaries. | Error message is being displayed and the game doesn't crash. | Pass        |
+| The game handles quit and continue user input                      | Enter valid values (q or just press ENTER)                                                                                                                                                               | Game is being continued or ended                             | Pass        |
+| The game handles quit and continue user input                      | Enter all kind of values that could cause an error                                                                                                                                                       | Error message is being displayed and the game doesn't crash. | Pass        |
+
+## Display and Output Testing:
+To verify the correctness and clarity of the display and output, execute the actions described below.
+
+| Description                     | Action                                                | Expected Result                                     | Pass / Fail |
+| ------------------------------- | ----------------------------------------------------- | --------------------------------------------------- | ----------- |
+| Display: Welcome Section        | Run the application                                   | Welcome Section is being displayed as expected      | Pass        |
+| Display: Player Boards          | Start the game                                        | Player Boards are being displayed as expected       | Pass        |
+| Display: Updated Player Boards  | Continue the game after attacking the opponents board | Player Boards are being displayed as expected       | Pass        |
+| Display Turn                    | Start the game, make attacks, continue the game       | Turn is being incremented and displayed as expected | Pass        |
+| Display Attack Result           | Choose coordinates to attack opponents board          | Attack is being displayed as expected               | Pass        |
+| Display: Ship Destroyed Message | Ship has been hit at all his coordinates              | Display Ship Destroyed as expected                  | Pass        |
+| Display: Winner                 | All ships of the opponend have been destroyed         | Display winner as expected                          | Pass        |
+
+## Debug Testing:
+Run debugging tests to ensure the robustness and correct functioning of critical methods within the application.
+
+| Description                                                                | Action                                                                                                                | Expected Result                                                                            | Pass / Fail |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------- |
+| Debugging - Check methods by manipulating parameters and check the result  | Manually manipulate parameters of critical methods (e.g., place_ship) and observe the outcome.                        | Confirms that the method handles manipulated parameters and produces the expected results. | Pass        |
+| Debugging - Check methods by observing and verifying correct functionality | Observe the execution of key methods (e.g., receive_attack, check_sunk_ships) and verify that they operate correctly. | Confirms that methods execute without errors and produce expected results.                 | Pass        |
 
 ## Validator Testing
 PEP8 ... 
+
+# Libraries Utilised
+
+## External Libraries
+### colorama 
+
+
+## Built in Python Libraries 
+### random 
+The random library was imported to access a number of the built in methods of generating a random selection. It was primarily utilised during the AI shot selection algorithms to select a random location to fire, or a random location from a generated list of options.
 
 # Deployment
 
