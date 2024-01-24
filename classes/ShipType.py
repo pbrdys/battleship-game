@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ShipType(Enum):
     """
     Enumeration defining types of ships with corresponding lengths.

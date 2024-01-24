@@ -6,7 +6,7 @@ class Player:
     - name (str): The name of the player.
     - board (Board): The game board associated with the player.
     """
-    
+
     def __init__(self, name, board):
         """
         Initialize a player with the given name and game board.

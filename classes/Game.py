@@ -5,6 +5,7 @@ from classes.Ship import Ship
 from colorama import Fore, Style
 import random
 
+
 class Game:
     """
     Represents a Battleship game.
@@ -16,7 +17,7 @@ class Game:
 
     def __init__(self):
         """
-        Initialize a Battleship game with two players and initial turn settings.
+        Initialize a Battleship game with two players and init turn settings.
         """
         self.players = [Player("Player 1", Board(9, 9)),
                         Player("Computer", Board(9, 9))]
@@ -24,7 +25,7 @@ class Game:
 
     def start_game(self):
         """
-        Start the Battleship game, allowing players to place their ships and initiating turns.
+        Start the game, allowing players to place their ships and init turns.
         """
 
         # Display a welcome message and game instructions
@@ -52,7 +53,7 @@ class Game:
                 start_action = int(input("Enter your choice: \n"))
 
                 if start_action == 1:
-                     # if start game then place ships and display boards
+                    # if start game then place ships and display boards
                     self.place_ships(self.players[0])
                     self.place_ships(self.players[1])
                     self.display_boards()
@@ -64,11 +65,13 @@ class Game:
                 else:
                     raise ValueError
             except ValueError:
-                print(Fore.RED + "Invalid input. Please enter a valid integer (1, 2).")
+                print(Fore.RED)
+                print("Invalid input. Please enter a valid integer (1, 2).")
                 print(Style.RESET_ALL)
                 continue
             except Exception:
-                print(Fore.GREEN + "Your random values can not crash this battleship.")
+                print(Fore.GREEN)
+                print("Your random values can not crash this battleship.")
                 print("Try again and make your move ;) \n")
                 print(Style.RESET_ALL)
                 continue
@@ -88,7 +91,7 @@ class Game:
         Parameters:
         - player (Player): The player for whom ships are to be placed.
         """
-        
+
         # List of ship types to be placed for the player
         ship_types = [
             ShipType.PATROL_BOAT,
@@ -106,7 +109,7 @@ class Game:
         """
         Display the game boards of all players.
         """
-        
+
         # Iterate through each player in the game
         for player in self.players:
             # Determine whether to show ships on the board or not
@@ -136,7 +139,7 @@ class Game:
         print("%" * 40 + "\n")
 
         # Determine current and other player based on the turn number
-        if not self.turn % 2 == 0: 
+        if not self.turn % 2 == 0:
             # Player turn
             current_player = self.players[0]
             other_player = self.players[1]
@@ -193,25 +196,29 @@ class Game:
                     x = int(input("Enter the x-coordinate for your attack:\n"))
                     y = int(input("Enter the y-coordinate for your attack:\n"))
 
-                # Check if the chosen coordinates are within the board boundaries
+                # Check if the coordinates are within the board boundaries
                 if (0 <= x < other_player.board.width and
                         0 <= y < other_player.board.height):
-                    # Break the loop if coordinates haven't been attacked before, then return them
+                    # Break loop if coordinates haven't been attacked before
                     if (x, y) not in other_player.board.attacks:
                         break
                     else:
-                        print(Fore.YELLOW + "You've already attacked these coordinates.")
+                        print(Fore.YELLOW)
+                        print("You've already attacked these coordinates.")
                         print(Style.RESET_ALL)
                 else:
-                    print(Fore.RED + "Please choose coordinates within the board (0 - 8).")
+                    print(Fore.RED)
+                    print("Please choose coordinates within the board (0-8).")
                     print(Style.RESET_ALL)
 
             except ValueError:
-                print(Fore.RED + "Please enter valid integers for x and y coordinates.")
+                print(Fore.RED)
+                print("Please enter valid integers for x and y coordinates.")
                 print(Style.RESET_ALL)
                 continue
             except Exception:
-                print(Fore.GREEN + "Your random values can not crash this battleship.")
+                print(Fore.GREEN)
+                print("Your random values can not crash this battleship.")
                 print("Try again and make your move ;) \n")
                 print(Style.RESET_ALL)
                 continue
@@ -245,10 +252,10 @@ class Game:
         """
 
         for ship in player.board.ships:
-            # if the ship hasn't been destroyed already, check if it was destroyed now
+            # if the ship hasn't been destroyed already
             if ship not in player.board.already_sunk_ships:
                 if ship.is_sunk():
-                    print(Fore.GREEN +  f"{ship.ship_type.name} - destroyed!")
+                    print(Fore.GREEN + f"{ship.ship_type.name} - destroyed!")
                     # Remove ship after it was destroyed
                     player.board.already_sunk_ships.append(ship)
                     print(Style.RESET_ALL)
@@ -259,22 +266,24 @@ class Game:
         """
         while True:
             try:
-                user_action = str(input("Press Enter to continue or q to quit:\n"))
+                action = str(input("Press Enter to continue or q to quit:\n"))
 
-                if not user_action:
+                if not action:
                     # If Enter is pressed, display player boards and continue
                     self.display_boards()
                     break
-                elif user_action.lower() == "q":
+                elif action.lower() == "q":
                     # If 'q' is entered, end the game
                     self.end_game()
 
             except ValueError:
-                print(Fore.RED + "Please enter 'q' to quit or press Enter to continue.")
+                print(Fore.RED)
+                print("Please enter 'q' to quit or press Enter to continue.")
                 print(Style.RESET_ALL)
                 continue
             except Exception:
-                print(Fore.GREEN + "Your random values can not crash this battleship.")
+                print(Fore.GREEN)
+                print("Your random values can not crash this battleship.")
                 print("Try again and make your move ;) \n")
                 print(Style.RESET_ALL)
                 continue

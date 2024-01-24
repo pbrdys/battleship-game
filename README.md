@@ -319,7 +319,17 @@ Run debugging tests to ensure the robustness and correct functioning of critical
 | Debugging - Check methods by observing and verifying correct functionality | Observe the execution of key methods (e.g., receive_attack, check_sunk_ships) and verify that they operate correctly. | Confirms that methods execute without errors and produce expected results.                 | Pass        |
 
 ## Validator Testing
-PEP8 ... 
+CI Python Linter - I utilised [pep8ci.herokuapp.com](https://pep8ci.herokuapp.com/#) to validate my python code. 
+All python files were checked with no errors or warnings reported.
+
+* Screenshots of the validator reports are here:
+    * [Main](./doc/ci_python_linter_main.jpg)
+    * [Board-Class](./doc/ci_python_linter_board.jpg)
+    * [Game-Class](./doc/ci_python_linter_game.jpg)
+    * [Player-Class](./doc/ci_python_linter_player.jpg)
+    * [Ship-Class](./doc/ci_python_linter_ship.jpg)
+    * [ShipType-Enum](./doc/ci_python_linter_shiptype.jpg)
+    * [Orientation-Enum](./doc/ci_python_linter_orientation.jpg)
 
 # Libraries Utilised
 

@@ -1,6 +1,7 @@
-from colorama import Fore, Style 
+from colorama import Fore, Style
 from classes.Orientation import Orientation
 import random
+
 
 class Board:
     """
@@ -50,7 +51,7 @@ class Board:
             x = random.randint(0, self.width - 1)
             y = random.randint(0, self.height - 1)
 
-            # Check if the ship fits in the chosen orientation and starting position within the board boundaries
+            # Check if the ship fits the orientation and starting position
             is_horizontal = orientation == Orientation.HORIZONTAL
             fits_horizontally = x + ship.ship_type.value <= self.width
             is_vertical = orientation == Orientation.VERTICAL
@@ -132,14 +133,14 @@ class Board:
                 # Customize cell content display based on the type of content
                 if cell_content == "X":
                     # Display hit in green
-                    row_str += f" {Fore.GREEN + cell_content + Style.RESET_ALL} |"
+                    row_str += f" {Fore.GREEN+cell_content+Style.RESET_ALL} |"
                 elif cell_content == "/":
                     # Display miss in red
-                    row_str += f" {Fore.RED + cell_content + Style.RESET_ALL} |"
+                    row_str += f" {Fore.RED+cell_content+Style.RESET_ALL} |"
                 else:
                     # Display ship in yellow
-                    row_str += f" {Fore.YELLOW + cell_content + Style.RESET_ALL} |"
-            
+                    row_str += f" {Fore.YELLOW+cell_content+Style.RESET_ALL} |"
+
             # Print the current row and separator line
             print(row_str)
             print("   +" + "+".join(["---" for _ in range(self.width)]) + "+")
@@ -171,10 +172,10 @@ class Board:
             # Display "/" if the attack missed all ships
             if not any((x, y) in ship.hits for ship in self.ships):
                 return "/"
-            
+
         # If the cell has no ship and has not been attacked
         return " "
-        
+
     def all_ships_sunken(self):
         """
         Check if all ships on the board are sunk.
