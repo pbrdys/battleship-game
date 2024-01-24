@@ -335,6 +335,35 @@ All python files were checked with no errors or warnings reported.
 
 ## External Libraries
 ### colorama 
+[colorama](https://pypi.org/project/colorama/) is an external Python library used to add colored output to the terminal. This library enhances the visual representation of text, making the console output more readable and appealing. In the context of the Battleship game, colorama is used to highlight hits, misses, and various messages, enhancing the overall user experience.
+
+#### How to use colorama:
+To utilize colorama in your Python script, follow these steps:
+
+* Import the necessary modules:
+<pre>
+```python
+    from colorama import Fore, Style
+```
+</pre>
+
+* Use **Fore.YOUR_SELECTED_COLOR** to display the following text in your chosen color. Available colors include **RED**, **GREEN**, **YELLOW**, and more.
+<pre>
+```python
+    print(Fore.GREEN)
+    print("This text will be displayed in GREEN")
+
+    print("This text will also be displayed in GREEN")
+```
+</pre> 
+
+* Use **Style.RESET_ALL** to reset the text color to the default.
+<pre>
+```python
+    print(Style.RESET_ALL)
+    print("This text will now be displayed in the default color (white).")
+```
+</pre> 
 
 
 ## Built in Python Libraries 
