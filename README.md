@@ -8,24 +8,27 @@ Welcome to the Console Battleship Game, an exciting battle brought to life in yo
 You can play this game at [https://pbrdys-battleship-game-e5bf19d085e1.herokuapp.com/](https://pbrdys-battleship-game-e5bf19d085e1.herokuapp.com/)
 
 ## How to play
-You open the link above to open the console web application. 
+You open the link above to open the python based console battleship application within the web browser. 
 The first thing you will see is a welcoming screen wether you can choose to start the game or end it 
 imediately. 
 
 * Choose '1' to start or '2' to end the game.
-* After you decide to play the game: your board (player's board) and the computer's board are being displayed.
-* Ships are being displayed on the player's board. On the computer's board are no ships visible.
-    * There are different ships available in this game with different lengths. (More information in the [ShipType Section](#ShipType)). Every ship is being displayed as its length number.
-* First turn is the players turn. 
-* Attack by choosing an x-coordinate and an y-coordinate.
+* You decided to play the game and the boards of both players (player 1 and computer) are being displayed.
+* Ships are only being displayed on the player's board. On the computer's board the ships are hidden.
+    * There are different ships with different lengths available in this game. (More information in the [ShipType Section](#ShipType)).
+* You (Player 1) has the first turn.
+* Choose an x-coordinate and an y-coordinate to attack the opponents board.
     * Coordinates can only be numbers within the board range.
 * Turn change: computers turn, computer attacks.
-* After 2 turns, both boards are being displayed.
+* After both players made their attacks, you can choose wether to continue or quit the game. 
+* You continue the game and the updated boards are being displayed:
     * Hits are displayed as an green "X"
     * Miss is being displayed as an red "/"
     * Ships are being displayed as an yellow number (2 - 5)
-* Both players go like that back and forth until one player has destroyed all ships of his opponend. 
-* Once a player won the game is over and you have tu run the application again.
+* Both players go like that back and forth until the game is over. 
+    * Game end: After both players attacked and you decide to quit the game
+    * Game end: After one player has destroyed all ships of the opponent.
+        * Once a player won the game is over and you have tu run the application again.
 
 ## Features
 ### Existing Features
@@ -54,16 +57,16 @@ Both boards are being [updated](#Update-Player-Boards) after they have been atta
 ### Place Ship
 The ships are being placed randomly for both players.
 The cirteria to place a ship are:
-    * Ships are not allowed to share the same coordinate (they shouldn cross each other)
-    * Ships must fit into the boards width and height. 
+* Ships are not allowed to share the same coordinate (they shouldn't cross each other)
+* Ships must fit into the boards width and height. 
 
 ### Play turn
-Player 1 starts the game. Player 1 is chosing his coordinates to attack the computers board. 
+Player 1 starts the game. Player 1 is choosing his coordinates to attack the computers board. 
 The criteria to match for the coordinates are:
-    * must be a valid integer within the board size. Starting with the index of 0. 
-    * no other values allowed like: strings, bool, etc. 
+* Coordinates must be a valid integers within the board size. Starting with the index of 0. 
+* No other values are permitted (e.g. strings, booleans, etc.)
 
-Choosing the wrong value will result in an [error message](#Display-Error-Messages).
+Entering invalid value results in an propper [error message](#Display-Error-Messages).
 
 ![Player1-Turn](./doc/play-turn-player1.jpg)
 
@@ -77,7 +80,7 @@ Like this both players play their turns back and forth until the game is over.
 ### Attack The Opponents Board
 Each turn a player is about to attack the opponents board by choosing the coordinates for his attack as described in the section [Play turn](#Play-turn).
 
-After a player attacked his opponents board he get's a info message wether he "hit" or "miss". 
+After a player has attacked the opponent's board, he receives an information message indicating whether he **hit** or **missed**.
 
 #### Hit
 ![Hit](./doc/hit.jpg)
@@ -86,21 +89,21 @@ After a player attacked his opponents board he get's a info message wether he "h
 ![Miss](./doc/miss-attack.jpg)
 
 ### Continue or Quit the Game
-After both players made their attack the user is being promted to choose wether to "continue" or "quit" the game.
+After both players made their attack the user is being promted to choose wether to **continue** or **quit** the game.
 ![Continue-Quit](./doc/promt-continue-quit.jpg)
 
 ### Update Player Boards
 The updated player boards contain:
 * Player 1:
-    * displaying ships as numbers (yellow)
-    * displaying hits as X (green)
-    * displaying miss as / (red)
+    * displaying **ships** as **numbers** (**yellow**)
+    * displaying **hits** as **X** (**green**)
+    * displaying **miss** as **/** (**red**)
 
 ![Updated-Player-Board](./doc/updated-player-board.jpg)
 
 * Computer:
-    * displaying hits as X (green)
-    * displaying miss as / (red)
+    * displaying **hits** as **X** (**green**)
+    * displaying **miss** as **/** (**red**)
 
 ![Updated-Computer-Board](./doc/updated-computer-board.jpg)
 
@@ -112,12 +115,12 @@ or after every second turn. Basically always after the computer made his attack,
 #### End Game before you even start: 
 ![Welcome-Screen-End-Game](./doc/end-game-message.jpg)
 
-To end the game at the welcome screen the player has to chose "2". 
+To end the game at the welcome screen the player has to chose **2**. 
 
 #### End Game during the game: 
 ![During-the-game-End-Game](./doc/quit-game-message.jpg)
 
-To end the game during the game, the player has to chose "q" to quit. 
+To end the game during the game, the player has to chose **q** to quit. 
 
 ### Determine the winner
 The third way to end the game is by winning or losing the game. After both players have played turn by turn against each other, the player who first has destroyed all ships of his opponend wins the game.
@@ -183,35 +186,35 @@ The Game class represents the overall structure and logic of a Battleship game.
 * __init__(self)
     * Initializes a Battleship game with two players.
     * Sets initial turn counter to 0.
-* start_game(self)
+* **start_game**(self)
     * Displays a welcome message and game instructions.
     * Allows players to choose between starting the game or ending it.
     * If the game starts, it places ships for both players and displays the initial boards.
-* end_game(self)
+* **end_game**(self)
     * Prints a message indicating the player chose to quit the game.
     * Exits the console.
-* place_ships(self, player)
+* **place_ships**(self, player)
     * Places ships on the board for the specified player.
-* display_boards(self)
+* **display_boards**(self)
     * Iterates through each player and displays their board with or without showing ships based on the player's name.
-* play_turn(self)
+* **play_turn**(self)
     * Increments the turn counter.
     * Displays turn information.
     * Determines the current player based on the turn number.
     * Prompts the current player to make an attack.
     * Displays the result of the attack and checks if any enemy ships have been sunk.
     * Shows a message prompting the player to continue.
-* get_attack_coordinates(self, current_player)
+* **get_attack_coordinates**(self, current_player)
     * Determines the coordinates for an attack based on the player:
         * For the computer player, generates random attack coordinates.
         * For the human player, prompts for input and validates the coordinates.
-* generate_random_attack_coordinates(self)
+* **generate_random_attack_coordinates**(self)
     * Generates random attack coordinates for the computer player.
     * Ensures the generated coordinates have not been attacked before.
-* check_sunk_ships(self, player)
+* **check_sunk_ships**(self, player)
     * Checks for sunk ships on the board of the specified player.
     * Checks if it was destroyed and prints a message if so.
-* show_continue_message(self)
+* **show_continue_message**(self)
     * Displays a message and waits for user input to continue the game.
     * If Enter is pressed, displays player boards and continues.
     * If 'q' is entered, ends the game.
@@ -231,21 +234,21 @@ The Board class is responsible for managing the state of the game board, placing
 
 * __init__(self, width, height)
     * Initializes a game board with the given width and height.
-* place_ship(self, ship)
+* **place_ship**(self, ship)
     * Places a ship on the board randomly.
     * Randomly selects an orientation (horizontal or vertical) for the ship.
     * Checks if the ship fits in the chosen orientation and starting position within the board boundaries.
-* receive_attack(self, x, y)
+* **receive_attack**(self, x, y)
     * Receives an attack at the specified coordinates (x, y).
     * Checks if the attack coordinates are within the valid board range.
     * Checks if the attack hits any ship on the board:
         * Returns True if the attack hits a ship, False otherwise.
-* display_board(self, show_ships)
+* **display_board**(self, show_ships)
     * Displays the current state of the game board.
     * Uses color-coding to distinguish hits (green), misses (red), and ships (yellow).
-* get_cell_content(self, x, y, show_ships)
+* **get_cell_content**(self, x, y, show_ships)
     Gets the content of a cell on the board for display purposes.
-* all_ships_sunken(self)
+* **all_ships_sunken**(self)
     Returns True if all ships are sunk, False otherwise.
 
 #### Ship Class
@@ -254,7 +257,7 @@ The Ship class represents a ship in the Battleship game.
 * __init__(self, ship_type)
     * Initializes a ship with the given type.
 
-* is_sunk(self)
+* **is_sunk**(self)
     Checks if the ship is sunk.
     Returns True if all positions occupied by the ship have been hit, returns False otherwise.
 
@@ -373,6 +376,19 @@ The random library in Python provides a suite of functions for generating random
 # Deployment
 The site was deployed via Heroku.
 The project was developed utilising a Code Institute provided template.
+
+## Version Control (GitHub)
+All files has been commited during the development process to GitHub.
+* File Structure: 
+    * /classes (all used classesto run this application)
+    * requirements.txt (contains all dependencies to run this application)
+    * doc (all images used for this documentation)
+    * run.py (main file to run this application)
+
+## Git Commands used during the development
+    - git add .                                     |       Add all changes to the next commit
+    - git commit -m "commit message here"           |       Commit the added changes
+    - git push                                      |       Finally push the changes to the git repository
 
 ## Project Deployment
 
