@@ -343,29 +343,26 @@ To utilize colorama in your Python script, follow these steps:
 
 * Import the necessary modules:
 
-```
-python
-from colorama import Fore, Style
+``` python
+    from colorama import Fore, Style
 ```
 
 
 * Use **Fore.YOUR_SELECTED_COLOR** to display the following text in your chosen color. Available colors include **RED**, **GREEN**, **YELLOW**, and more.
-<pre>
+
 ```python
     print(Fore.GREEN)
     print("This text will be displayed in GREEN")
 
     print("This text will also be displayed in GREEN")
 ```
-</pre> 
 
 * Use **Style.RESET_ALL** to reset the text color to the default.
-<pre>
+
 ```python
     print(Style.RESET_ALL)
     print("This text will now be displayed in the default color (white).")
 ```
-</pre> 
 
 
 ## Built in Python Libraries 
@@ -399,17 +396,16 @@ The project utilizes the Python Essentials Template, acting as a mock terminal t
 
 * **Orderly Input Methods**: It's essential to include a newline character (**\n**) at the end of each input method text. For instance:
 
-```
-python
-x = int(input("Enter the x-coordinate for your attack:\n"))
+``` python
+    x = int(input("Enter the x-coordinate for your attack:\n"))
 ```
 
 * **Requirements List**: Create a list of requirements for your project, specifying dependencies like colorama. Update the requirements.txt file with the command:
-<pre>
-```python
+
+``` python
     pip3 freeze > requirements.txt
 ```
-</pre> 
+
 This file informs Heroku about the necessary dependencies to install.
 
 * **GitHub Repository**: Upload all project files to your GitHub repository [GitHub](https://github.com).
