@@ -10,7 +10,7 @@ You can play this game at [https://pbrdys-battleship-game-e5bf19d085e1.herokuapp
 ## How to play
 You open the link above to open the python based console battleship application within the web browser. 
 The first thing you will see is a welcoming screen wether you can choose to start the game or end it 
-imediately. 
+immediately.
 
 * Choose '1' to start or '2' to end the game.
 * You decided to play the game and the boards of both players (player 1 and computer) are being displayed.
@@ -28,7 +28,7 @@ imediately.
 * Both players go like that back and forth until the game is over. 
     * Game end: After both players attacked and you decide to quit the game
     * Game end: After one player has destroyed all ships of the opponent.
-        * Once a player won the game is over and you have tu run the application again.
+        * Once a player won the game is over and you have to run the application again.
 
 ## Features
 ### Existing Features
@@ -46,7 +46,7 @@ After the game was started the first thing the user will see are the boards of b
 ![Initial-Player1-Board](./doc/initial-player-board.jpg)
 
 On the players board the ships are being displayed with yellow numbers. 
-The number is refering to the length of the ship.
+The number is referring to the length of the ship.
 
 ![Initial-Computer-Board](./doc/initial-computer-board.jpg)
 
@@ -56,7 +56,7 @@ Both boards are being [updated](#Update-Player-Boards) after they have been atta
 
 ### Place Ship
 The ships are being placed randomly for both players.
-The cirteria to place a ship are:
+The criteria to place a ship are:
 * Ships are not allowed to share the same coordinate (they shouldn't cross each other)
 * Ships must fit into the boards width and height. 
 
@@ -66,7 +66,7 @@ The criteria to match for the coordinates are:
 * Coordinates must be a valid integers within the board size. Starting with the index of 0. 
 * No other values are permitted (e.g. strings, booleans, etc.)
 
-Entering invalid value results in an propper [error message](#Display-Error-Messages).
+Entering invalid value results in an proper [error message](#Display-Error-Messages).
 
 ![Player1-Turn](./doc/play-turn-player1.jpg)
 
@@ -89,7 +89,7 @@ After a player has attacked the opponent's board, he receives an information mes
 ![Miss](./doc/miss-attack.jpg)
 
 ### Continue or Quit the Game
-After both players made their attack the user is being promted to choose wether to **continue** or **quit** the game.
+After both players made their attack the user is being prompted to choose wether to **continue** or **quit** the game.
 ![Continue-Quit](./doc/promt-continue-quit.jpg)
 
 ### Update Player Boards
@@ -123,7 +123,7 @@ To end the game at the welcome screen the player has to chose **2**.
 To end the game during the game, the player has to chose **q** to quit. 
 
 ### Determine the winner
-The third way to end the game is by winning or losing the game. After both players have played turn by turn against each other, the player who first has destroyed all ships of his opponend wins the game.
+The third way to end the game is by winning or losing the game. After both players have played turn by turn against each other, the player who first has destroyed all ships of his opponent wins the game.
 
 ![Display-Winner](./doc/display-winner.jpg)
 
@@ -138,7 +138,7 @@ When the user attempts to attack the same coordinate again, a relevant message i
 ![Already-Attacked-Message](./doc/already-attacked.jpg)
 
 #### Error: Coordinates out of range
-When the user attempts to attack coordinates that are not within the range (width, height) of the opponents board, a relevant message is being displayed, promting the user to select different coordinates.
+When the user attempts to attack coordinates that are not within the range (width, height) of the opponents board, a relevant message is being displayed, prompting the user to select different coordinates.
 * X-Coordinate: between 0 and max-board-width
 * Y-Coordinate: between 0 and max-board-height
 
@@ -164,21 +164,19 @@ In certain scenarios, the application may encounter unforeseeable input values. 
 * Dynamic player name and board size.
 
 ## Data Model
-I utilised an Object Orientated Programming approach to developing the game.
+I utilized an Object Orientated Programming approach to developing the game.
 The initial file is the **run.py** which is calling:
-<pre>
 ```python
     if __name__ == "__main__":
         main()
 ```
-</pre> 
 
 The **main()** function is responsible to establish the whole game.
 It is starting the game by creating a new **Game** instance, placing ships on the boards of both players and displaying the initial boards. 
 
-### Class Diagram
+### UML Diagram
 
-![Class-Diagram](./doc/class-diagram.jpg)
+![UML-Diagram](./doc/class-diagram.jpg)
 
 #### Game Class
 The Game class represents the overall structure and logic of a Battleship game. 
@@ -311,7 +309,7 @@ To verify the correctness and clarity of the display and output, execute the act
 | Display Turn                    | Start the game, make attacks, continue the game       | Turn is being incremented and displayed as expected | Pass        |
 | Display Attack Result           | Choose coordinates to attack opponents board          | Attack is being displayed as expected               | Pass        |
 | Display: Ship Destroyed Message | Ship has been hit at all his coordinates              | Display Ship Destroyed as expected                  | Pass        |
-| Display: Winner                 | All ships of the opponend have been destroyed         | Display winner as expected                          | Pass        |
+| Display: Winner                 | All ships of the opponent have been destroyed         | Display winner as expected                          | Pass        |
 
 ## Debug Testing:
 Run debugging tests to ensure the robustness and correct functioning of critical methods within the application.
@@ -322,7 +320,7 @@ Run debugging tests to ensure the robustness and correct functioning of critical
 | Debugging - Check methods by observing and verifying correct functionality | Observe the execution of key methods (e.g., receive_attack, check_sunk_ships) and verify that they operate correctly. | Confirms that methods execute without errors and produce expected results.                 | Pass        |
 
 ## Validator Testing
-CI Python Linter - I utilised [pep8ci.herokuapp.com](https://pep8ci.herokuapp.com/#) to validate my python code. 
+CI Python Linter - I utilized [pep8ci.herokuapp.com](https://pep8ci.herokuapp.com/#) to validate my python code. 
 All python files were checked with no errors or warnings reported.
 
 * Screenshots of the validator reports are here:
@@ -334,7 +332,7 @@ All python files were checked with no errors or warnings reported.
     * [ShipType-Enum](./doc/ci_python_linter_shiptype.jpg)
     * [Orientation-Enum](./doc/ci_python_linter_orientation.jpg)
 
-# Libraries Utilised
+# Libraries Utilized
 
 ## External Libraries
 ### colorama 
@@ -344,11 +342,12 @@ All python files were checked with no errors or warnings reported.
 To utilize colorama in your Python script, follow these steps:
 
 * Import the necessary modules:
-<pre>
-```python
-    from colorama import Fore, Style
+
 ```
-</pre>
+python
+from colorama import Fore, Style
+```
+
 
 * Use **Fore.YOUR_SELECTED_COLOR** to display the following text in your chosen color. Available colors include **RED**, **GREEN**, **YELLOW**, and more.
 <pre>
@@ -375,12 +374,12 @@ The random library in Python provides a suite of functions for generating random
 
 # Deployment
 The site was deployed via Heroku.
-The project was developed utilising a Code Institute provided template.
+The project was developed utilizing a Code Institute provided template.
 
 ## Version Control (GitHub)
-All files has been commited during the development process to GitHub.
+All files has been committed during the development process to GitHub.
 * File Structure: 
-    * /classes (all used classesto run this application)
+    * /classes (all used classes to run this application)
     * requirements.txt (contains all dependencies to run this application)
     * doc (all images used for this documentation)
     * run.py (main file to run this application)
@@ -399,11 +398,11 @@ The deployment process begins by creating a virtual environment **(venv)** on yo
 The project utilizes the Python Essentials Template, acting as a mock terminal that allows users to experience the Python console application in a web browser. Deployment to Heroku differs from GitHub Pages, and the following steps guide the deployment process:
 
 * **Orderly Input Methods**: It's essential to include a newline character (**\n**) at the end of each input method text. For instance:
-<pre>
-```python
-    x = int(input("Enter the x-coordinate for your attack:\n"))
+
 ```
-</pre> 
+python
+x = int(input("Enter the x-coordinate for your attack:\n"))
+```
 
 * **Requirements List**: Create a list of requirements for your project, specifying dependencies like colorama. Update the requirements.txt file with the command:
 <pre>

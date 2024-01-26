@@ -191,7 +191,7 @@ class Game:
                     x, y = self.generate_random_attack_coordinates()
                     print(f"Computer chose coordinates: ({x}, {y})")
                 else:
-                    # Promt player input for x and y coordinates
+                    # Prompt player input for x and y coordinates
                     other_player = self.players[1]
                     x = int(input("Enter the x-coordinate for your attack:\n"))
                     y = int(input("Enter the y-coordinate for your attack:\n"))
