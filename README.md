@@ -430,4 +430,13 @@ By following these steps, your Battleship game will be successfully deployed on 
 
 
 # Credits
-Thank you Daisy McGirr
+I used object-oriented programming principles in the creation of this Battleship game. Since the Code Institute courses did not delve deeply into object-oriented programming, I proactively searched for additional learning resources on the internet. Below is a list of tutorials, web pages, and courses that I used to enhance my understanding of object-oriented programming:
+
+* Youtube: Object Oriented Programming with Python - Full Course for Beginners
+    * https://www.youtube.com/watch?v=Ej_02ICOIgs&t=3478s
+* Object-Oriented Programming (OOP) in Python 3
+    * https://realpython.com/python3-object-oriented-programming/
+* https://www.python.org/
+* https://docs.python.org/3/tutorial/classes.html
+
+I also want to thank Daisy Mc Girr for her support throughout my entire projects so far. 
