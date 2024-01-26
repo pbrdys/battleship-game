@@ -47,6 +47,12 @@ def main():
             print(f"* {winning_player.name} Wins the Game *")
             print("*" * 30)
             print(Style.RESET_ALL)
+            
+            replay = str(input("Enter 'y' if you want to play again?\n"))
+            if replay.lower() == "y":
+                main()
+            else:
+                game.end_game()
             break
         except Exception:
             print(Fore.GREEN)
