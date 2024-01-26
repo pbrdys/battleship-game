@@ -1,5 +1,5 @@
 from colorama import Fore, Style
-from classes.Orientation import Orientation
+from classes.orientation import Orientation
 import random
 
 

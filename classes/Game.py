@@ -1,7 +1,7 @@
-from classes.Board import Board
-from classes.Player import Player
-from classes.ShipType import ShipType
-from classes.Ship import Ship
+from classes.board import Board
+from classes.player import Player
+from classes.ship_type import ShipType
+from classes.ship import Ship
 from colorama import Fore, Style
 import random
 
