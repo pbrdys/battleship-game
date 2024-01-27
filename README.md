@@ -28,7 +28,7 @@ immediately.
 * Both players go like that back and forth until the game is over. 
     * Game end: After both players attacked and you decide to quit the game
     * Game end: After one player has destroyed all ships of the opponent.
-        * Once a player won the game is over and you have to run the application again.
+        * Once a winner is determined, the user will have the option to replay the game or choose to exit.
 
 ## Features
 ### Existing Features
@@ -129,6 +129,11 @@ The third way to end the game is by winning or losing the game. After both playe
 
 In the moment the last ship was destroyed, the winner is being displayed and the game is over. 
 
+### Replay game
+Once a winner is determined, users will have the option to replay the game or choose to exit.
+
+![Replay-Game](./doc/replay.jpg)
+
 ### Display Error Messages
 Error messages play a crucial role in enhancing the gameplay experience as they provide users with feedback on their actions. This information helps users understand what is happening and guides them on the necessary steps. Additionally, effectively catching errors and delivering appropriate messages prevents the application from crashing.
 
@@ -155,7 +160,6 @@ When the entered coordinates don't match the criteria, a relevant message is dis
 In certain scenarios, the application may encounter unforeseeable input values. To safeguard against potential crashes, it is imperative to establish a comprehensive high-level exception handling mechanism at the application's core. This overarching exception handling will address any errors that may arise and are not specifically caught elsewhere within the application.
 
 ![Exception-Handling](./doc/exception-handling.jpg)
-
 
 
 ## Future Features
