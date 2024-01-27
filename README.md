@@ -90,6 +90,7 @@ After a player has attacked the opponent's board, he receives an information mes
 
 ### Continue or Quit the Game
 After both players made their attack the user is being prompted to choose wether to **continue** or **quit** the game.
+
 ![Continue-Quit](./doc/promt-continue-quit.jpg)
 
 ### Update Player Boards
