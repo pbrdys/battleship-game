@@ -1,4 +1,4 @@
-# PBRDYS Battleship Game
+# Brdys Battleship Game
 
 ## Introduction
 Welcome to the Console Battleship Game, an exciting battle brought to life in your console! This Python-based game pits you against a computer opponent in a strategic showdown on the high seas.
